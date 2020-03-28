@@ -1,0 +1,83 @@
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-size: cover;
+  background-image: url("https://embedwistia-a.akamaihd.net/deliveries/d5ae8190f0aa7dfbe0b01f336f29d44094b967b5.webp?image_crop_resized=1280x720");
+  text-align: center;
+}
+.Title {
+  font-size: 40px;
+  font-weight: bolder;
+  color: black;
+  line-height: 200px;
+}
+.signUpTemplate {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  border: 1px solid black;
+  width: 20%;
+  left: 40%;
+  background-color: white;
+  border-radius: 10px;
+}
+.EmailBox {
+  position: relative;
+  width: 80%;
+  left: 1%;
+  height: 10%;
+  margin: "5px";
+  border-radius: "5px";
+  margin-bottom: 5%;
+  padding: 10px 3px;
+  line-height: 28px;
+  background-color: lightcyan;
+}
+.PasswordBox {
+  position: relative;
+  width: 80%;
+  left: 1%;
+  height: 10%;
+  margin: "5px";
+  border-radius: "5px";
+  margin-bottom: 5%;
+  padding: 10px 3px;
+  line-height: 28px;
+  background-color: lightcyan;
+}
+.LoginBox {
+  position: relative;
+  border: 1px solid black;
+  top: 50%;
+  width: 20%;
+  left: 40%;
+  height: 40%;
+  top: 20%;
+  border-radius: 5px;
+  background-color: white;
+}
+.LoginButton {
+  width: 40%;
+  height: 40px;
+  font-size: 16px;
+  background-color: royalblue;
+  margin-bottom: 5%;
+  color: white;
+}
+.Or {
+  font-weight: bold;
+  margin-bottom: 5%;
+  color: navy;
+}
+.SignUpButton {
+  width: 40%;
+  height: 40px;
+  font-size: 16px;
+  background-color: royalblue;
+  margin-bottom: 5%;
+  color: white;
+}
