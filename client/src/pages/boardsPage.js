@@ -31,36 +31,31 @@ class BoardsPage extends React.Component {
             alert("Board name already exists!");
           } else {
             let currentBoard = this.state.boards;
-            console.log("currentBoard: ", currentBoard);
             currentBoard.push({
               name: this.state.newBoardName
             });
-            console.log("addBoard res: ", res);
             let newboards = res.data.user.boards;
             this.setState({ boards: newboards });
             document.getElementById("boardNameInput").value = null;
           }
         })
-        .catch(err => console.log(err));
+        .catch(err => alert(err));
     }
   };
   deleteBoard = boardID => async e => {
     e.stopPropagation();
-    console.log("deletion board's ID: ", boardID);
     await axios
       .post("http://www.localhost:3000/api/boardDelete", {
         userID: this.props.userID,
         boardID: boardID
       })
       .then(res => {
-        console.log("deleteBoard res: ", res);
         let resboard = res.data.user.boards;
         this.setState({ boards: resboard });
       });
   };
   editBoard = (boardID, newPrompt) => async e => {
     e.stopPropagation();
-    console.log("newPrompt: ", newPrompt);
     await axios.post("http://www.localhost:3000/api/boardEdit", {
       userID: this.props.userID,
       boardID: boardID,
@@ -68,13 +63,10 @@ class BoardsPage extends React.Component {
     });
   };
   componentDidMount = async () => {
-    console.log("this.props.userID: ", this.props.userID);
     await axios
       .post("http://www.localhost:3000/api/getUser", { id: this.props.userID })
       .then(res => {
-        console.log("res: ", res);
         const { name, email, password, boards } = res.data.user;
-        //this is to pass down boards to container page state
         this.props.handleUploadBoard(res.data.user.boards);
         this.setState({
           name: name,
@@ -82,16 +74,11 @@ class BoardsPage extends React.Component {
           password: password,
           boards: boards
         });
-        console.log("state name: ", this.state.name);
-        console.log("state email: ", this.state.email);
-        console.log("state password: ", this.state.password);
-        console.log("state boards: ", this.state.boards);
       });
   };
   render() {
     const { isLogin } = this.props;
     const boardies = this.state.boards;
-    console.log(isLogin);
     if (isLogin === true) {
       return (
         <div className="boardsfullscreen">
@@ -144,7 +131,6 @@ class BoardsPage extends React.Component {
                       className="board"
                       key={board._id}
                       onClick={() => {
-                        console.log("selected Board with ID: ", board._id);
                         this.props.handleBoardSelect(board._id);
                         this.props.history.push("/containers");
                       }}
@@ -160,7 +146,6 @@ class BoardsPage extends React.Component {
                       <div
                         className="editButton"
                         onClick={async e => {
-                          // e.preventDefault();
                           e.stopPropagation();
                           let txt;
                           let newPrompt = prompt(
@@ -171,9 +156,6 @@ class BoardsPage extends React.Component {
                           } else {
                             txt = newPrompt;
                           }
-                          console.log(txt);
-
-                          console.log("newPrompt: ", newPrompt);
                           await axios
                             .post("http://www.localhost:3000/api/boardEdit", {
                               userID: this.props.userID,
@@ -184,17 +166,13 @@ class BoardsPage extends React.Component {
                               if (res.status === 201) {
                                 alert("That name is already taken!");
                               } else if (res.status === 200) {
-                                console.log("sent!!!!!!!!!!!!!!!!! : ", res);
                                 let updatedboards = res.data.user.boards;
                                 this.setState({ boards: updatedboards });
                               }
                             })
                             .catch(err => {
-                              console.log(err);
+                              alert(err);
                             });
-
-                          // this.editBoard(board._id, txt);
-                          // e.stopPropagation();
                         }}
                       >
                         Edit
@@ -209,7 +187,6 @@ class BoardsPage extends React.Component {
     } else {
       return <div>Oops, please login!</div>;
     }
-    // console.log("HomeIsLogoin", isLogin);
   }
 }
 export default withRouter(BoardsPage);

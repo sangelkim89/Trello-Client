@@ -34,28 +34,7 @@ class App extends React.Component {
     localStorage.setItem("isLogin", false);
     this.setState({ isLogin: false, userID: "" });
   };
-  // componentDidMount() {
-  //   console.log("localstorage: ", localStorage.getItem("userID"));
-  //   let storageLogin = localStorage.getItem("isLogin");
-  //   let storageUserID = localStorage.getItem("userID");
-  //   let storageBoardID = localStorage.getItem("selectedBoardID");
-  //   let storageBoards = localStorage.getItem("boards");
-  //   this.setState({
-  //     isLogin: storageLogin || false,
-  //     userID: storageUserID || "",
-  //     selectedBoardID: storageBoardID || "",
-  //     boards: storageBoards || []
-  //   });
-  //   console.log("login state: ", this.state.isLogin);
-  //   console.log("userID state: ", this.state.userID);
-  //   console.log("boardid state: ", this.state.selectedBoardID);
-  //   console.log("boards state: ", this.state.boards);
-  // }
-  // logOut = () => {
-  //   axios.get("localhost:8000/user/logout").then(res => {
-  //     this.setState({ isLogin: false }).catch(err => console.log(err));
-  //   });
-  // };
+
   render() {
     const { isLogin, userID, selectedBoardID } = this.state;
     return (
@@ -96,6 +75,7 @@ class App extends React.Component {
             path="/containers"
             render={() => (
               <ContainersPage
+                userID={this.state.userID}
                 isLogin={isLogin}
                 userID={userID}
                 selectedBoardID={selectedBoardID}

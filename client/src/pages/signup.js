@@ -37,7 +37,6 @@ class Signup extends React.Component {
                   })
                   .then(res => {
                     if (res.status === 200) {
-                      console.log("user created!");
                       this.props.history.push("/");
                     }
                   })
@@ -45,7 +44,7 @@ class Signup extends React.Component {
                     alert("Email already exists");
                   });
               } else {
-                console.log("Confirm Password must match!");
+                alert("Confirm Password must match!");
               }
             }}
           >

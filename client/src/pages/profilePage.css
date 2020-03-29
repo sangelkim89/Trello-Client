@@ -13,6 +13,8 @@
   text-align: center;
 }
 .boardsTitleThree {
+  position: absolute;
+  left: 44.25%;
   font-size: 40px;
   font-weight: bolder;
   color: black;
@@ -20,15 +22,17 @@
 }
 .boardsTemplatethree {
   position: relative;
-  top: 9%;
+  top: 31.1%;
   text-align: center;
   border: 1px solid black;
   width: 80%;
   height: 70%;
   left: 10%;
-  background-color: lightsteelblue;
+  background-color: lightskyblue;
   border-radius: 30px;
-  padding-top: 6%;
+  float: left;
+  overflow-y: auto;
+  padding-top: 50px;
 }
 .boardsTabthree {
   display: inline-block;

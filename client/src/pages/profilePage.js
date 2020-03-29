@@ -33,7 +33,6 @@ class ProfilePage extends React.Component {
         password: newPassword || this.state.password
       })
       .then(res => {
-        console.log("res: ", res);
         if (res.status === 200) {
           this.setState({
             name: newName || this.state.name,
@@ -43,7 +42,7 @@ class ProfilePage extends React.Component {
           alert("Info Changed!");
         }
       })
-      .catch(err => console.log(err));
+      .catch(err => alert(err));
   };
 
   handleDelete = () => {
@@ -53,12 +52,11 @@ class ProfilePage extends React.Component {
           id: this.props.userID
         })
         .then(res => {
-          console.log("delete account res: ", res);
           if (res.status === 200) {
             this.props.handleLogout();
             this.props.history.push("/");
           } else {
-            console.log("failed to delete account");
+            alert("failed to delete account");
           }
         });
     }
@@ -68,17 +66,12 @@ class ProfilePage extends React.Component {
     await axios
       .post("http://www.localhost:3000/api/getUser", { id: this.props.userID })
       .then(res => {
-        console.log("res: ", res);
         const { name, email, password } = res.data.user;
         this.setState({
           name: name,
           email: email,
           password: password
         });
-        console.log("state name: ", this.state.name);
-        console.log("state email: ", this.state.email);
-        console.log("state password: ", this.state.password);
-        console.log("state boards: ", this.state.boards);
       });
   };
   render() {
@@ -142,6 +135,11 @@ class ProfilePage extends React.Component {
               <button
                 className="buttonLogout"
                 onClick={() => {
+                  localStorage.setItem("isLogin", false);
+                  localStorage.setItem("userID", "");
+                  localStorage.setItem("boards", []);
+                  localStorage.setItem("selectedBoardID", "");
+                  localStorage.setItem("auth", "");
                   this.props.handleLogout();
                   this.props.history.push("/");
                 }}

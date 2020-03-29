@@ -13,9 +13,7 @@ class Homepage extends React.Component {
       [key]: e.target.value
     });
   };
-  componentDidMount() {
-    console.log("isLogin: ", this.props.isLogin);
-  }
+
   handleSubmit = e => {
     e.preventDefault();
     const { email, password } = this.state;
@@ -27,32 +25,18 @@ class Homepage extends React.Component {
         password: password
       })
       .then(res => {
-        // console.log("res: ", res);
-        // console.log("token from local storage: ", localStorage.getItem("auth"));
-        // let storageToken = localStorage.getItem("auth");
         let token = "Bearer " + res.data.token;
-        // console.log("TOKENNN: ", token);
-        // console.log("token from res: ", res.data.token);
-        // console.log(
-        //   "comparison: ",
-        //   localStorage.getItem("auth") === res.data.token
-        // );
         if (res.status === 200) {
           axios.defaults.headers.common["Authorization"] = token;
-          // localStorage.setItem("auth", "Bearer " + res.data.token);
-          // console.log(res);
           handleIsLoginChange(res.data.userID);
           this.props.history.push("/boards");
         }
       })
       .catch(err => {
-        console.log(err);
         alert("failed to log in!");
       });
   };
   render() {
-    // console.log(isLogin);
-
     return (
       <div className="fullscreen">
         <span className="Title"> Trello Clone</span>
@@ -94,11 +78,6 @@ class Homepage extends React.Component {
         </center>
       </div>
     );
-
-    // else if (isLogin === true) {
-    //   return <div>Successfully logged in!</div>;
-    // }
-    // console.log("HomeIsLogoin", isLogin);
   }
 }
 export default withRouter(Homepage);
