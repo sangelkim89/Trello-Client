@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter, Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import "./signup.css";
+require("dotenv").config();
 
 class Signup extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class Signup extends React.Component {
               e.preventDefault();
               if (password === confirmPassword) {
                 axios
-                  .post("http://www.localhost:3000/api/signup", {
+                  .post(process.env.REACT_APP_ENDPOINT + "/api/signup", {
                     name: username,
                     email: email,
                     password: password

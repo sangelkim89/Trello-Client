@@ -5,6 +5,7 @@ import axios from "axios";
 import styled from "styled-components";
 import Droppable from "./Droppable";
 import Draggable from "./Draggable";
+require("dotenv").config();
 
 const Wrapper = styled.div`
   margin-left: 80px;
@@ -60,7 +61,7 @@ class ContainersPage extends React.Component {
       alert("You must enter a container name!");
     } else {
       await axios
-        .post("http://www.localhost:3000/api/containerCreate", {
+        .post(process.env.REACT_APP_ENDPOINT + "/api/containerCreate", {
           boardID: this.props.selectedBoardID,
           name: newContainerName,
           userID: this.props.userID
@@ -77,7 +78,7 @@ class ContainersPage extends React.Component {
     e.preventDefault();
 
     await axios
-      .post("http://www.localhost:3000/api/cardCreate", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/cardCreate", {
         userID: this.props.userID,
         boardID: this.props.selectedBoardID,
         containerID: containerID,
@@ -91,7 +92,7 @@ class ContainersPage extends React.Component {
   deleteContainer = containerID => async e => {
     e.stopPropagation();
     await axios
-      .post("http://www.localhost:3000/api/containerDelete", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/containerDelete", {
         boardID: this.props.selectedBoardID,
         containerID: containerID
       })
@@ -102,7 +103,7 @@ class ContainersPage extends React.Component {
   deleteCard = (cardID, containerID) => async e => {
     e.stopPropagation();
     await axios
-      .post("http://www.localhost:3000/api/cardDelete", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/cardDelete", {
         cardID: cardID
       })
       .then(res => {
@@ -116,7 +117,9 @@ class ContainersPage extends React.Component {
 
   componentDidMount = async () => {
     await axios
-      .post("http://www.localhost:3000/api/getUser", { id: this.props.userID })
+      .post(process.env.REACT_APP_ENDPOINT + "/api/getUser", {
+        id: this.props.userID
+      })
       .then(res => {
         const { boards } = res.data.user;
 
@@ -135,12 +138,16 @@ class ContainersPage extends React.Component {
         let board = this.state.boards[boardIndex];
         this.setState({ board: board });
       });
-    await axios.get("http://www.localhost:3000/api/getCards").then(res => {
-      this.setState({ cards: res.data.cards });
-    });
-    await axios.get("http://www.localhost:3000/api/getContainers").then(res => {
-      this.setState({ containers: res.data.containers });
-    });
+    await axios
+      .get(process.env.REACT_APP_ENDPOINT + "/api/getCards")
+      .then(res => {
+        this.setState({ cards: res.data.cards });
+      });
+    await axios
+      .get(process.env.REACT_APP_ENDPOINT + "/api/getContainers")
+      .then(res => {
+        this.setState({ containers: res.data.containers });
+      });
   };
   render() {
     const { isLogin } = this.props;
@@ -210,7 +217,8 @@ class ContainersPage extends React.Component {
                           }
                           await axios
                             .post(
-                              "http://www.localhost:3000/api/containerEdit",
+                              process.env.REACT_APP_ENDPOINT +
+                                "/api/containerEdit",
                               {
                                 boardID: this.props.selectedBoardID,
                                 containerID: container._id,
@@ -284,7 +292,8 @@ class ContainersPage extends React.Component {
                                   }
                                   await axios
                                     .post(
-                                      "http://www.localhost:3000/api/cardEdit",
+                                      process.env.REACT_APP_ENDPOINT +
+                                        "/api/cardEdit",
                                       {
                                         cardID: card._id,
                                         containerID: container._id,

@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./homepage.css";
 import axios from "axios";
+require("dotenv").config();
 
 class Homepage extends React.Component {
   state = {
@@ -20,7 +21,7 @@ class Homepage extends React.Component {
     const { handleIsLoginChange } = this.props;
 
     return axios
-      .post("http://www.localhost:3000/api/login", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/login", {
         email: email,
         password: password
       })

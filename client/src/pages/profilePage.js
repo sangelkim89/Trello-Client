@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 import "./profilePage.css";
 import axios from "axios";
+require("dotenv").config();
 
 class ProfilePage extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class ProfilePage extends React.Component {
     const { newName, newEmail, newPassword } = this.state;
 
     return axios
-      .post("http://www.localhost:3000/api/editUserInfo", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/editUserInfo", {
         id: this.props.userID,
         name: newName || this.state.name,
         email: newEmail || this.state.email,
@@ -48,7 +49,7 @@ class ProfilePage extends React.Component {
   handleDelete = () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       return axios
-        .post("http://www.localhost:3000/api/deleteAccount", {
+        .post(process.env.REACT_APP_ENDPOINT + "/api/deleteAccount", {
           id: this.props.userID
         })
         .then(res => {
@@ -64,7 +65,9 @@ class ProfilePage extends React.Component {
 
   componentDidMount = async () => {
     await axios
-      .post("http://www.localhost:3000/api/getUser", { id: this.props.userID })
+      .post(process.env.REACT_APP_ENDPOINT + "/api/getUser", {
+        id: this.props.userID
+      })
       .then(res => {
         const { name, email, password } = res.data.user;
         this.setState({

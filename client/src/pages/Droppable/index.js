@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 //this is the container
 import axios from "axios";
+require("dotenv").config();
 
 export default class Droppable extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ export default class Droppable extends React.Component {
     e.target.appendChild(document.getElementById(data));
 
     await axios
-      .post("http://www.localhost:3000/api/changeCardPosition", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/changeCardPosition", {
         cardID: data,
         containerID: this.props.id
       })

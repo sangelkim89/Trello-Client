@@ -2,6 +2,8 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import "./boardsPage.css";
 import axios from "axios";
+require("dotenv").config();
+
 class BoardsPage extends React.Component {
   state = {
     newBoardName: "",
@@ -22,7 +24,7 @@ class BoardsPage extends React.Component {
       alert("You must enter a board name!");
     } else {
       await axios
-        .post("http://www.localhost:3000/api/boardCreate", {
+        .post(process.env.REACT_APP_ENDPOINT + "/api/boardCreate", {
           userID: this.props.userID,
           newBoardName: newBoardName
         })
@@ -45,7 +47,7 @@ class BoardsPage extends React.Component {
   deleteBoard = boardID => async e => {
     e.stopPropagation();
     await axios
-      .post("http://www.localhost:3000/api/boardDelete", {
+      .post(process.env.REACT_APP_ENDPOINT + "/api/boardDelete", {
         userID: this.props.userID,
         boardID: boardID
       })
@@ -56,7 +58,7 @@ class BoardsPage extends React.Component {
   };
   editBoard = (boardID, newPrompt) => async e => {
     e.stopPropagation();
-    await axios.post("http://www.localhost:3000/api/boardEdit", {
+    await axios.post(process.env.REACT_APP_ENDPOINT + "/api/boardEdit", {
       userID: this.props.userID,
       boardID: boardID,
       newBoardName: newPrompt
@@ -64,7 +66,9 @@ class BoardsPage extends React.Component {
   };
   componentDidMount = async () => {
     await axios
-      .post("http://www.localhost:3000/api/getUser", { id: this.props.userID })
+      .post(process.env.REACT_APP_ENDPOINT + "/api/getUser", {
+        id: this.props.userID
+      })
       .then(res => {
         const { name, email, password, boards } = res.data.user;
         this.props.handleUploadBoard(res.data.user.boards);
@@ -157,11 +161,14 @@ class BoardsPage extends React.Component {
                             txt = newPrompt;
                           }
                           await axios
-                            .post("http://www.localhost:3000/api/boardEdit", {
-                              userID: this.props.userID,
-                              boardID: board._id,
-                              newBoardName: txt
-                            })
+                            .post(
+                              process.env.REACT_APP_ENDPOINT + "/api/boardEdit",
+                              {
+                                userID: this.props.userID,
+                                boardID: board._id,
+                                newBoardName: txt
+                              }
+                            )
                             .then(res => {
                               if (res.status === 201) {
                                 alert("That name is already taken!");
