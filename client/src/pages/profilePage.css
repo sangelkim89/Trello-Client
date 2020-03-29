@@ -1,0 +1,111 @@
+.tabHover:hover {
+  background-color: rgb(28, 117, 146);
+}
+.boardsfullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-size: cover;
+  background-image: url("https://embedwistia-a.akamaihd.net/deliveries/d5ae8190f0aa7dfbe0b01f336f29d44094b967b5.webp?image_crop_resized=1280x720");
+  text-align: center;
+}
+.boardsTitleThree {
+  position: absolute;
+  left: 44.25%;
+  font-size: 40px;
+  font-weight: bolder;
+  color: black;
+  line-height: 200px;
+}
+.boardsTemplatethree {
+  position: relative;
+  top: 31.1%;
+  text-align: center;
+  border: 1px solid black;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  background-color: lightskyblue;
+  border-radius: 30px;
+  float: left;
+  overflow-y: auto;
+  padding-top: 50px;
+}
+.boardsTabthree {
+  display: inline-block;
+  position: absolute;
+  top: 28%;
+  left: 25%;
+  border: 1px solid black;
+  width: 9%;
+  height: 10%;
+  background-color: white;
+}
+.myBoardTabthree {
+  display: inline-block;
+  position: absolute;
+  top: 28%;
+  left: 45%;
+  border: 1px solid black;
+  width: 9%;
+  height: 10%;
+  background-color: white;
+}
+.profileTabthree {
+  display: inline-block;
+  position: absolute;
+  top: 28%;
+  left: 65%;
+  border: 1px solid black;
+  width: 9%;
+  height: 10%;
+  background-color: lightblue;
+}
+
+.inputName {
+  width: 20%;
+  height: 30px;
+  font-size: large;
+  margin: 30px;
+}
+.inputEmail {
+  width: 20%;
+  height: 30px;
+  font-size: large;
+  margin: 30px;
+}
+.inputPassword {
+  width: 20%;
+  height: 30px;
+  font-size: large;
+  margin: 30px;
+}
+
+.doodad {
+  font-size: large;
+}
+.buttonName {
+  width: 6%;
+  height: 25px;
+}
+.buttonEmail {
+  width: 6%;
+  height: 25px;
+}
+.buttonPassword {
+  width: 6%;
+  height: 25px;
+}
+.buttonLogout {
+  width: 6%;
+  height: 25px;
+  margin: 30px;
+}
+.buttonDelete {
+  width: 10%;
+  height: 25px;
+  margin: 30px;
+}

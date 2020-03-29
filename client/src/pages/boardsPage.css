@@ -1,0 +1,135 @@
+.tabHover:hover {
+  background-color: rgb(28, 117, 146);
+}
+.boardsfullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background-size: cover;
+  background-image: url("https://embedwistia-a.akamaihd.net/deliveries/d5ae8190f0aa7dfbe0b01f336f29d44094b967b5.webp?image_crop_resized=1280x720");
+  text-align: center;
+}
+.boardsTitle {
+  position: absolute;
+  left: 44.25%;
+  font-size: 40px;
+  font-weight: bolder;
+  color: black;
+  line-height: 200px;
+}
+.boardsTemplate {
+  position: relative;
+  top: 31.1%;
+  text-align: center;
+  border: 1px solid black;
+  width: 80%;
+  height: 70%;
+  left: 10%;
+  background-color: lightblue;
+  border-radius: 30px;
+  overflow-y: scroll;
+  overflow-x: auto;
+  float: left;
+}
+.boardsTab {
+  display: inline-block;
+  position: absolute;
+  top: 28%;
+  left: 25%;
+  border: 1px solid black;
+  width: 9%;
+  height: 10%;
+  background-color: lightblue;
+}
+.myBoardTab {
+  display: inline-block;
+  position: absolute;
+  top: 28%;
+  left: 45%;
+  border: 1px solid black;
+  width: 9%;
+  height: 10%;
+  background-color: white;
+}
+.profileTab {
+  display: inline-block;
+  position: absolute;
+  top: 28%;
+  left: 65%;
+  border: 1px solid black;
+  width: 9%;
+  height: 10%;
+  background-color: white;
+}
+.addBoardBox {
+  position: relative;
+  left: 39%;
+  height: 11vh;
+  width: 20%;
+  border: 1px solid black;
+  margin: 15px;
+  padding-right: 15px;
+  border-radius: 15px;
+  background-color: lightsteelblue;
+}
+#boardNameInput {
+  text-align: center;
+  margin: 15px;
+  height: 3vh;
+}
+.addBoardButton {
+  width: 40%;
+  height: 30px;
+}
+.board {
+  display: inline-block;
+  height: 11vh;
+  width: 20%;
+  border: 1px solid black;
+  margin: 15px;
+  padding-right: 15px;
+  border-radius: 15px;
+  background-color: lightsteelblue;
+  font-size: large;
+}
+.board:hover {
+  cursor: pointer;
+}
+.boardTitle {
+  font-size: larger;
+  font-weight: bold;
+  margin-top: 5px;
+  color: royalblue;
+}
+.xbutton {
+  display: inline-block;
+  position: relative;
+
+  left: 52%;
+  border: 1px solid black;
+
+  width: 7%;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+.xbutton:hover {
+  cursor: pointer;
+  color: red;
+}
+.editButton {
+  display: inline-block;
+  position: relative;
+  left: 46.5%;
+  border: 1px solid black;
+
+  width: 17%;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+.editButton:hover {
+  cursor: pointer;
+  color: red;
+}
