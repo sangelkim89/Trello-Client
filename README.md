@@ -1,7 +1,7 @@
 # Trello Clone -Server
 1. Intro
 
-This is the client-side of the project Trello Clone.
+This is the client-side of the project Trello Clone. Similar to Trello, you can create boards in which you can create containers, in which you can create cards.
 
 2. Project
 
@@ -32,3 +32,7 @@ npm start
 -Link to project Notion page: 
 
 https://www.notion.so/16-6f2aeac08897469286c88b69d7aa699f
+
+-Link to website: 
+
+http://clonetrello.s3-website.ap-northeast-2.amazonaws.com/
