@@ -1,4 +1,4 @@
-# Trello Clone -Server
+# Trello Clone -Client
 1. Intro
 
 This is the client-side of the project Trello Clone. Similar to Trello, you can create boards in which you can create containers, in which you can create cards.
